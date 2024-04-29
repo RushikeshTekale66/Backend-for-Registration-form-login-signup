@@ -26,10 +26,12 @@ const Registration = mongoose.model("RegistrationFormDB", registrationSchema);
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
+// home api ie. form api
 app.get("/", (req, res)=>{
     res.sendFile(__dirname + "/pages/index.html");
 })
 
+// Post data to database api
 app.post('/register', async(req, res)=>{
     try{
         const {name, email, password} = req.body;
@@ -57,10 +59,12 @@ app.post('/register', async(req, res)=>{
     }
 })
 
+// User successfully registerd page
 app.get("/success", (req, res)=>{
     res.sendFile(__dirname + "/pages/success.html");
 })
 
+// error while registering the page
 app.get("/error", (req, res)=>{
     res.sendFile(__dirname + "/pages/error.html");
 })
