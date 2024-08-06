@@ -1,15 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+const Database = process.env.Database;
+
 
 const app = express();
-dotenv.config();
+// dotenv.config();
 
 const port = process.env.PORT || 3000;
 
 // mongodb localhost connection 
-mongoose.connect("mongodb://127.0.0.1:27017/Registerdata", {
+mongoose.connect(Database, {
 useNewUrlParser:true,
 useUnifiedTopology:true});
 
